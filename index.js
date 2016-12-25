@@ -1,11 +1,13 @@
-
+var Random = require("random-js");
+var random = new Random(Random.engines.mt19937().autoSeed());
+// var value = random.integer(1, 3);
 
 var prize_door = null;
 var picked_door = null;
 var final_choice = null;
 var possibilities = [1,2,3];
 
-var simulation_number = 100000;
+var simulation_number = 1000000;
 var wins = 0;
 
 var switchMe = true;
@@ -16,12 +18,12 @@ console.log("========================");
 
 for (var i = 0; i < simulation_number; i++){
   //prize door is a random from 1 to 3
-  prize_door = Math.round((Math.random()*2)+1);
+  prize_door = random.integer(1, 3);
   // console.log("Prize door: " + prize_door);
 
 
   //picked door is a random from 1 to 3
-  picked_door = Math.round((Math.random()*2)+1);
+  picked_door = random.integer(1, 3);
   // console.log("Picked door: " + picked_door);
 
   //reveal one door
@@ -128,7 +130,7 @@ function validateDoor(prize, picked){
       break;
 
     case 2:
-      var revealNum = Math.round((Math.random()*1));
+      var revealNum = random.integer(1, 2);
       // console.log("Revealing door " + possibilities[revealNum] + " to be empty!\n");
 
       //Create new array, determine switched number
