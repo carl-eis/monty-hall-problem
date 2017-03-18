@@ -1,46 +1,82 @@
+/*
+    Solution to the Monty Hall Door Problem
+
+    Author: Carl Eiserman
+    Website: https://github.com/carl-eis
+    
+*/
+
+/*====================================================
+  Imports
+====================================================*/
+
 var Random = require("random-js");
 var random = new Random(Random.engines.mt19937().autoSeed());
 // var value = random.integer(1, 3);
+
+/*====================================================
+  Globals
+====================================================*/
 
 var prize_door = null;
 var picked_door = null;
 var final_choice = null;
 var possibilities = [1,2,3];
 
+//GLOBAL VARIABLE!!!
 var simulation_number = 1000000;
+
+//GLOBAL VARIABLE!!!
 var wins = 0;
 
+//GLOBAL VARIABLE!!!
 var switchMe = true;
 
-console.log("\n\n========================");
-console.log("Running simulation...");
-console.log("========================");
+/*====================================================
+  Driver Area
+====================================================*/
 
-for (var i = 0; i < simulation_number; i++){
-  //prize door is a random from 1 to 3
-  prize_door = random.integer(1, 3);
-  // console.log("Prize door: " + prize_door);
-
-
-  //picked door is a random from 1 to 3
-  picked_door = random.integer(1, 3);
-  // console.log("Picked door: " + picked_door);
-
-  //reveal one door
-  // console.log(possibilities);
-  switchDoor(prize_door, picked_door);
+main();
 
 
 
-  //switch to second door
+/*====================================================
+  Functions
+====================================================*/
 
-  //if door = prize, wins++
+
+function main(){
+    console.log("\n\n========================");
+    console.log("Running simulation...");
+    console.log("========================");
+
+    for (var i = 0; i < simulation_number; i++){
+      //prize door is a random from 1 to 3
+      prize_door = random.integer(1, 3);
+      // console.log("Prize door: " + prize_door);
+
+
+      //picked door is a random from 1 to 3
+      picked_door = random.integer(1, 3);
+      // console.log("Picked door: " + picked_door);
+
+      //reveal one door
+      // console.log(possibilities);
+      switchDoor(prize_door, picked_door);
+
+
+
+      //switch to second door
+
+      //if door = prize, wins++
+    }
+
+    console.log("Number of wins: " + wins);
+    console.log("Win percentage: " + wins/simulation_number*100 + "%");
+    console.log("\n\n");
+
+
 }
-
-console.log("Number of wins: " + wins);
-console.log("Win percentage: " + wins/simulation_number*100 + "%");
-console.log("\n\n");
-
 
 function switchDoor(prize, picked){
 
