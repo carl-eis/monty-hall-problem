@@ -90,8 +90,6 @@ function main(){
 		else if (prizeDoor == pickedDoor){
 			wins++;
 		}
-
-
 	}
 
 	logger.log("WINS: " + wins, "info");
