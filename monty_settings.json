@@ -1,0 +1,7 @@
+{
+	"SIMULATION_AMOUNT": 1000000,
+	"NUMBER_OF_DOORS": 3,
+	"USE_SWITCH_STRATEGY": true,
+	"DEBUG_LOGGING": false,
+	"FAST_RUN": true
+}

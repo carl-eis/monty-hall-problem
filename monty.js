@@ -13,17 +13,18 @@
 var Random = require("random-js");
 var random = new Random(Random.engines.mt19937().autoSeed());
 var start = process.hrtime();
+var fs = require('fs');
 
 /*====================================================
   Globals
 ====================================================*/
 
-var SIMULATION_AMOUNT = 1000000;
-var NUMBER_OF_DOORS = 3;
-var DOOR_ARRAY = populateDoorArray(NUMBER_OF_DOORS);
-var USE_SWITCH_STRATEGY = true;
-var DEBUG_LOGGING = false;
-var FAST_RUN = true;
+var SIMULATION_AMOUNT;
+var NUMBER_OF_DOORS;
+var DOOR_ARRAY;
+var USE_SWITCH_STRATEGY;
+var DEBUG_LOGGING;
+var FAST_RUN;
 
 var logger = {
 	cache: "",
@@ -56,7 +57,9 @@ var logger = {
   Driver Area
 ====================================================*/
 
-main();
+readConfigFile(main);
+
+// main();
 
 function main(){
 
@@ -209,4 +212,18 @@ function elapsed_time(note){
 
 function cloneArray(input){
 	return input.slice(0);
+}
+
+function readConfigFile(callback){
+	// callback();
+	var settingsRead = require("./monty_settings.json");
+
+	SIMULATION_AMOUNT = settingsRead.SIMULATION_AMOUNT;
+	NUMBER_OF_DOORS = settingsRead.NUMBER_OF_DOORS;
+	DOOR_ARRAY = populateDoorArray(NUMBER_OF_DOORS);
+	USE_SWITCH_STRATEGY = settingsRead.USE_SWITCH_STRATEGY;
+	DEBUG_LOGGING = settingsRead.DEBUG_LOGGING;
+	FAST_RUN = settingsRead.FAST_RUN;
+
+	callback();
 }

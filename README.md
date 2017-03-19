@@ -19,6 +19,8 @@ Run the program:
 
 ### Config Variables
 
+These variables will be found in `monty_settings.json` - tweak them for different results.
+
 - **SIMULATION_AMOUNT** - Number of simulations to run 
 - **NUMBER_OF_DOORS** - Number of doors to use (must be 3 or more)
 - **USE_SWITCH_STRATEGY** - True if switching every time
