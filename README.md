@@ -24,8 +24,8 @@ will implement a switch strategy or not.
 
 ### Config Variables
 
-- SIMULATION_AMOUNT - Number of simulations to run 
-- NUMBER_OF_DOORS - Number of doors to use (must be 3 or more)
-- USE_SWITCH_STRATEGY - True if switching every time
-- DEBUG_LOGGING - (slow mode only) - log debug text to console
-- FAST_RUN - Run improved algorithym
+- **SIMULATION_AMOUNT** - Number of simulations to run 
+- **NUMBER_OF_DOORS** - Number of doors to use (must be 3 or more)
+- **USE_SWITCH_STRATEGY** - True if switching every time
+- **DEBUG_LOGGING** - (slow mode only) - log debug text to console
+- **FAST_RUN** - Run improved algorithym
