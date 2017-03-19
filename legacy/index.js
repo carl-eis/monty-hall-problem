@@ -12,6 +12,8 @@
 
 var Random = require("random-js");
 var random = new Random(Random.engines.mt19937().autoSeed());
+var start = process.hrtime();
+
 // var value = random.integer(1, 3);
 
 /*====================================================
@@ -74,6 +76,7 @@ function main(){
     console.log("Number of wins: " + wins);
     console.log("Win percentage: " + wins/simulation_number*100 + "%");
     console.log("\n\n");
+    elapsed_time("");
 
 
 }
@@ -192,4 +195,11 @@ function validateDoor(prize, picked){
     default:
 
   }
+}
+
+function elapsed_time(note){
+    var precision = 3; // 3 decimal places
+    var elapsed = process.hrtime(start)[1] / 1000000; // divide by a million to get nano to milli
+    console.log("Execution Time: " + process.hrtime(start)[0] + " s, " + elapsed.toFixed(precision) + " ms - " + note); // print message + time
+    start = process.hrtime(); // reset the timer
 }
